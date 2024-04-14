@@ -2,6 +2,7 @@
 import express from 'express';
 import { configDotenv } from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from "cors";
 
 // Custom imports
 import authRoutes from './routes/auth.routes.js'
@@ -17,6 +18,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middlewares
+app.use(cors());
 app.use(express.json()); // parse incoming request with JSON payloads from req.body
 app.use(cookieParser()); // parse incoming request with cookies from req.cookies
 app.use("/api/auth", authRoutes);
