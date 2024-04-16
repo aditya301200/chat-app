@@ -1,4 +1,5 @@
 // Package imports
+import path from 'path';
 import express from 'express';
 import { configDotenv } from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -17,6 +18,7 @@ import { app, server } from './socket/socket.js';
 // Variables
 
 const port = process.env.PORT || 3000;
+const __dirname = path.resolve();
 
 // Middlewares
 // app.use(cors());
@@ -26,10 +28,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
-// Base route
-app.get("/", (req, res) => {
-    res.send("Hello World");
-});
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req,res) => {
+    res.sendFile(path.join(__dirname, "client","dist","index.html"));
+})
 
 // Server
 server.listen(port, () => {
