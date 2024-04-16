@@ -1,9 +1,8 @@
 // Package imports
 import jwt from 'jsonwebtoken';
-import { configDotenv } from 'dotenv';
 
 // Configurations
-configDotenv();
+// configDotenv();
 
 const generateTokenAndSetCookie = (userId, res) => {
     // generate jwt token
@@ -18,6 +17,7 @@ const generateTokenAndSetCookie = (userId, res) => {
         sameSite: "strict", // CSRF protection
         secure: process.env.NODE_ENV !== "development"
     })
+    
 }
 
 export default generateTokenAndSetCookie;

@@ -48,8 +48,10 @@ export const signup = async (req, res) => {
 
       // send response
       res.status(201).json({
-        message: "User created successfully",
-        user: newUser,
+        _id: newUser._id,
+        fullName: newUser.fullName,
+        username: newUser.username,
+        profilePic: newUser.profilePic,
       });
     } else {
       res.status(400).json({
@@ -91,8 +93,10 @@ export const login = async (req, res) => {
 
     // send response
     res.status(200).json({
-      message: "User logged in successfully",
-      user,
+      _id: user._id,
+      fullName: user.fullName,
+      username: user.username,
+      profilePic: user.profilePic,
     });
   } catch (err) {
     console.log("Error in login controller", err.message);

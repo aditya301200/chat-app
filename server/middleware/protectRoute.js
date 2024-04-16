@@ -6,6 +6,7 @@ const protectRoute = async (req, res, next) => {
   try {
     // fetch token from cookies
     const token = req.cookies.jwt;
+    // console.log(token)
 
     // if no token, send 401 status
     if (!token) {
@@ -24,9 +25,11 @@ const protectRoute = async (req, res, next) => {
 
     // find user by id and exclude password
     const user = await User.findById(decoded.userId).select("-password"); // this userId is the one we set in generateToken.js
-
+    // console.log("user: ", user);
     // send user to req.user
     req.user = user;
+    // console.log(req.user._id);
+    // req.user = Object;
 
     // call next middleware
     next();
