@@ -2,6 +2,9 @@
 
 [Demo App](https://chat-app-vj1t.onrender.com/)
 
+![image](https://github.com/aditya301200/chat-app/assets/103925035/55943955-5001-45f2-8dc3-17eb05de2390)
+
+
 Some Features:
 
 -   Tech stack: MERN + Socket.io + TailwindCSS + Daisy UI
